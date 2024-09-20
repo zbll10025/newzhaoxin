@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Platform
+  - zidanag
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Platform
+  - Water
+  - UI
+  - Enemy
+  - Zidang
+  - Player
+  - CamerLayer
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: bg1
+    uniqueID: 92916073
+    locked: 0
+  - name: bg2
+    uniqueID: 2108305689
+    locked: 0
+  - name: bg3
+    uniqueID: 2254470533
+    locked: 0
+  - name: bg4
+    uniqueID: 799348117
+    locked: 0
+  - name: Ground
+    uniqueID: 3858267265
+    locked: 0
+  - name: bgWater
+    uniqueID: 1481367101
+    locked: 0
+  - name: Player
+    uniqueID: 2133678989
+    locked: 0
+  - name: Enemy
+    uniqueID: 2473748339
+    locked: 0
+  - name: bg5
+    uniqueID: 1922194125
+    locked: 0
+  - name: CameraSortingLayer
+    uniqueID: 3248427039
+    locked: 0

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54a6225faa55984f825294371ac8d4c, type: 3}
+  m_Name: MostBullet_So
+  m_EditorClassIdentifier: 
+  List_MostBullet:
+  - name: Rem17Bullet
+    path: Prefabs/Enemy/ReEnemy/Project/Rem17Bullet
+    isRightLocalscal: 0
+    force: 0
+    speed: 15
+  - name: Rem17AttackFX
+    path: Prefabs/Enemy/ReEnemy/Project/Rem17AttackFX
+    isRightLocalscal: 1
+    force: 0
+    speed: 12
+  - name: Rem7Projectile1
+    path: Prefabs/Enemy/ReEnemy/Project/Rem7Projectile1
+    isRightLocalscal: 1
+    force: 15
+    speed: 15
+  - name: Rem2Projectile
+    path: Prefabs/Enemy/ReEnemy/Project/Rem2Projectile
+    isRightLocalscal: 1
+    force: 15
+    speed: 15
+  - name: Rem3Projectile
+    path: Prefabs/Enemy/ReEnemy/Project/Rem3Projectile
+    isRightLocalscal: 1
+    force: 15
+    speed: 15
+  - name: Rem11Projectile
+    path: Prefabs/Enemy/ReEnemy/Project/Rem11Projectile
+    isRightLocalscal: 0
+    force: 15
+    speed: 15
+  - name: Rem14Spike
+    path: Prefabs/Enemy/ReEnemy/Project/Rem14Spike
+    isRightLocalscal: 0
+    force: 6
+    speed: 6
+  - name: Rem7Spike
+    path: Prefabs/Enemy/ReEnemy/Project/Rem7Spike
+    isRightLocalscal: 0
+    force: 10
+    speed: 15
