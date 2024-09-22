@@ -13,7 +13,7 @@ public class PlayerInputSystem : Singleton<PlayerInputSystem>
     public bool PrimaryAttack => inputAction.Player.PrimaryAttack.triggered;
     public bool Charge => inputAction.Player.PrimaryAttack.phase == InputActionPhase.Performed;
     public bool Dash => inputAction.Player.Dash.triggered;
-    public bool Pause => inputAction.Player.Pause.phase == InputActionPhase.Started;
+   // public bool Pause => inputAction.Player.Pause.phase == InputActionPhase.Started;
     protected override void Awake()
     {
         base.Awake();

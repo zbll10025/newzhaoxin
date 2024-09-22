@@ -51,5 +51,5 @@ MonoBehaviour:
   - name: Rem7Spike
     path: Prefabs/Enemy/ReEnemy/Project/Rem7Spike
     isRightLocalscal: 0
-    force: 10
-    speed: 15
+    force: 20
+    speed: 20

@@ -5,10 +5,11 @@ using BehaviorDesigner.Runtime.Tasks;
 public class Most7ScatingBullet :Action
 {
     Most7Data most;
+    public float force;
     public override void OnStart()
     {
         most   = GetComponent<Most7Data>();
-        most.ScatingBullet();
+        most.ScatingBullet(force);
     }
 
   

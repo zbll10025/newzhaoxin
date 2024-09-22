@@ -32,7 +32,7 @@ public class PausePanel : BasePanel
     {
         StartCoroutine (DelayReturnMainNeun());
     }
-    public  void Option()
+    public async void Option()
     {
         StartCoroutine(DelayDisplayOptionMean());
     }

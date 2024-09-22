@@ -10,16 +10,9 @@ using Cysharp.Threading.Tasks;
 public class LandMost : BaseEnemy
     {
    
-
-      
-        
        //前十个地面怪物检测player组件的方法在各自的子类里
         public BehaviorTree behaviorTree;
 
-        
-        
-       
-       
         protected override void Awake()
         {
            base.Awake();
@@ -27,7 +20,6 @@ public class LandMost : BaseEnemy
           
 
         }  
-
         // Update is called once per frame
         protected override void Update()
         {
@@ -35,19 +27,7 @@ public class LandMost : BaseEnemy
             GetPlayerObject();
             GetPlayerDirction();
             GetPlayerDistance();
-            
         }
-
-     
-
-  
-       
-
-       
-
-        
-
-       
 
     public virtual void CancelAniAttack()
     {

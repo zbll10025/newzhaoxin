@@ -70,14 +70,7 @@ public class Most7Data : LandMost
     protected override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            ani.SetBool("isRoll",true);
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            ani.SetBool("isRoll", false);
-        }
+       
         if (isDash)
         {
             rig.velocity = new Vector2(dashDir.x * dashSpeed, 0);
@@ -149,7 +142,7 @@ public class Most7Data : LandMost
         GameObject obj1 = PoolManger.Instance.Get(mostSpikeBulletData.name, mostSpikeBulletData.path);
         GameObject obj2 = PoolManger.Instance.Get(mostSpikeBulletData.name, mostSpikeBulletData.path);
         GameObject obj3 = PoolManger.Instance.Get(mostSpikeBulletData.name, mostSpikeBulletData.path);
-        GameObject obj4 = PoolManger.Instance.Get(mostSpikeBulletData.name, mostSpikeBulletData.path);
+       // GameObject obj4 = PoolManger.Instance.Get(mostSpikeBulletData.name, mostSpikeBulletData.path);
         GameObject obj5 = PoolManger.Instance.Get(mostSpikeBulletData.name, mostSpikeBulletData.path);
         GameObject obj6 = PoolManger.Instance.Get(mostSpikeBulletData.name, mostSpikeBulletData.path);
         GameObject obj7 = PoolManger.Instance.Get(mostSpikeBulletData.name, mostSpikeBulletData.path);
@@ -161,7 +154,7 @@ public class Most7Data : LandMost
         SetPosition(obj1, spik1);
         SetPosition(obj2,spik2) ;
         SetPosition(obj3, spik3) ;
-        SetPosition(obj4, spik4) ;
+       // SetPosition(obj4, spik4) ;
         SetPosition(obj5, spik5) ;
         SetPosition(obj6, spik6) ;
         SetPosition(obj7, spik7) ;
@@ -172,7 +165,7 @@ public class Most7Data : LandMost
         FixAngle(obj1.GetComponent<MostBullet>());
         FixAngle(obj2.GetComponent<MostBullet>());
         FixAngle(obj3.GetComponent<MostBullet>());
-        FixAngle(obj4.GetComponent<MostBullet>());
+       // FixAngle(obj4.GetComponent<MostBullet>());
         FixAngle(obj5.GetComponent<MostBullet>());
         FixAngle(obj6.GetComponent<MostBullet>());
         FixAngle(obj7.GetComponent<MostBullet>());
@@ -180,21 +173,20 @@ public class Most7Data : LandMost
         obj1.SetActive(true);
         obj2.SetActive(true);
         obj3.SetActive(true);
-        obj4.SetActive(true);
+       // obj4.SetActive(true);
         obj5 .SetActive(true);
         obj6.SetActive(true);
         obj7.SetActive(true);
         BulletStart(obj1.GetComponent<MostBullet>(), sDir1, 3);
         BulletStart(obj2.GetComponent<MostBullet>(), sDir2, mostSpikeBulletData.force);
         BulletStart(obj3.GetComponent<MostBullet>(), sDir3, mostSpikeBulletData.force);
-        BulletStart(obj4.GetComponent<MostBullet>(), sDir4, mostSpikeBulletData.force);
+       // BulletStart(obj4.GetComponent<MostBullet>(), sDir4, mostSpikeBulletData.force);
         BulletStart(obj5.GetComponent<MostBullet>(), sDir5, mostSpikeBulletData.force);
         BulletStart(obj6.GetComponent<MostBullet>(), sDir6, mostSpikeBulletData.force);
         BulletStart(obj7.GetComponent<MostBullet>(), sDir7, 3);
     }
     #endregion
-
-    //散弹
+   
     public void ScatingBullet()
     {
         Vector2 dir = (player.transform.position-bullet1LunchPosition.position).normalized;
@@ -248,6 +240,70 @@ public class Most7Data : LandMost
         objNeg1.GetComponent<MostBullet>().Onstart_Force(dir1Neg, force);
         objNeg2.GetComponent<MostBullet>().Onstart_Force(dir2Neg, force);
        
+    }
+    //重载tempforce方便在行为树调整数值
+    public void ScatingBullet(float tempforce=0)
+    {
+        Vector2 dir = (player.transform.position - bullet1LunchPosition.position).normalized;
+        float angle1 = scatingOffeset1;
+        float angleNeg1 = -scatingOffeset1;
+        float angle2 = scatingOffeset2;
+        float angleNeg2 = -scatingOffeset2;
+
+        float rad1 = Mathf.Deg2Rad * angle1;
+        float radNeg1 = Mathf.Deg2Rad * angleNeg1;
+        float rad2 = Mathf.Deg2Rad * angle2;
+        float radNeg2 = Mathf.Deg2Rad * angleNeg2;
+        Vector2 dir1 = RotateVector(dir, rad1);
+        Vector2 dir1Neg = RotateVector(dir, radNeg1);
+        Vector2 dir2 = RotateVector(dir, rad2);
+        Vector2 dir2Neg = RotateVector(dir, radNeg2);
+        GameObject obj = PoolManger.Instance.Get("Rem7Projectile1", mostBullet1Data.path);
+        GameObject obj1 = PoolManger.Instance.Get("Rem7Projectile1", mostBullet1Data.path);
+        GameObject objNeg1 = PoolManger.Instance.Get("Rem7Projectile1", mostBullet1Data.path);
+        GameObject obj2 = PoolManger.Instance.Get("Rem7Projectile1", mostBullet1Data.path);
+        GameObject objNeg2 = PoolManger.Instance.Get("Rem7Projectile1", mostBullet1Data.path);
+        // mostBulletLunch.FixObjectDirc(dir, mostBullet1Data.isRightLocalscal, obj);
+        // mostBulletLunch.FixObjectDirc(dir1, mostBullet1Data.isRightLocalscal, obj1);
+        // mostBulletLunch.FixObjectDirc(dir2, mostBullet1Data.isRightLocalscal, obj2);
+        // mostBulletLunch.FixObjectDirc(dir1Neg, mostBullet1Data.isRightLocalscal, objNeg1);
+        // mostBulletLunch.FixObjectDirc(dir2Neg, mostBullet1Data.isRightLocalscal, objNeg2);
+        //mostBulletLunch.FixAngelOffest(mostBullet1Data.isRightLocalscal, obj1.GetComponent<MostBullet>());
+        // mostBulletLunch.FixAngelOffest(mostBullet1Data.isRightLocalscal, obj2.GetComponent<MostBullet>());
+        // mostBulletLunch.FixAngelOffest(mostBullet1Data.isRightLocalscal, objNeg1.GetComponent<MostBullet>());
+        // mostBulletLunch.FixAngelOffest(mostBullet1Data.isRightLocalscal, obj.GetComponent<MostBullet>());
+        // mostBulletLunch.FixAngelOffest(mostBullet1Data.isRightLocalscal, objNeg2.GetComponent<MostBullet>());
+        obj1.GetComponent<MostBullet>().OnstartCancelGrivaty();
+        obj2.GetComponent<MostBullet>().OnstartCancelGrivaty();
+        obj.GetComponent<MostBullet>().OnstartCancelGrivaty();
+        objNeg1.GetComponent<MostBullet>().OnstartCancelGrivaty();
+        objNeg2.GetComponent<MostBullet>().OnstartCancelGrivaty();
+        obj1.transform.position = bullet1LunchPosition.position;
+        obj2.transform.position = bullet1LunchPosition.position;
+        objNeg1.transform.position = bullet1LunchPosition.position;
+        obj.transform.position = bullet1LunchPosition.position;
+        objNeg2.transform.position = bullet1LunchPosition.position;
+        obj.SetActive(true);
+        obj1.SetActive(true);
+        obj2.SetActive(true);
+        objNeg1.SetActive(true);
+        objNeg2.SetActive(true);
+        float force;
+        if (tempforce == 0)
+        {
+                 force = scatingForce;
+        }
+        else
+        {
+             force = tempforce;
+        }
+       
+        obj1.GetComponent<MostBullet>().Onstart_Force(dir1, force);
+        obj2.GetComponent<MostBullet>().Onstart_Force(dir2, force);
+        obj.GetComponent<MostBullet>().Onstart_Force(dir, force);
+        objNeg1.GetComponent<MostBullet>().Onstart_Force(dir1Neg, force);
+        objNeg2.GetComponent<MostBullet>().Onstart_Force(dir2Neg, force);
+
     }
     public override void CheckAniFallState()
     {

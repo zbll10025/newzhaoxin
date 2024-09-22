@@ -7,7 +7,7 @@ using static TestSave;
 
 public class GameButton : MonoBehaviour
 {
-    GameData data = new GameData();
+    public GameData data = new GameData();
     public Text id;
     public Image image;
     public Text place;
@@ -16,9 +16,8 @@ public class GameButton : MonoBehaviour
     public GameObject deleteButton;
     public Button StartButton;
     public string sceneName;
-    private void Start()
+    private void Awake()
     {
-        Save();
         Load();
     }
     public void Load()
@@ -35,14 +34,21 @@ public class GameButton : MonoBehaviour
     }
     public void LoadData()
     {
-        id.text = data.Id.ToString();
-        place.text = data.place;
-        time.text = data.time;
-        sceneName = data.scene;
+        if(LoadByJosn())
+        {
+            place.text = data.place;
+            time.text = data.time;
+            sceneName = data.scene;
+        }
+        else
+        {
+            place.text = "";
+            time.text = "";
+            sceneName = "";
+        }
     }
     public void SavingData()
     {
-        Debug.Log(id.text);
         int mun = int.Parse(id.text);//תintֵ
         data.Id = mun;
         data.place = place.text;
@@ -53,9 +59,17 @@ public class GameButton : MonoBehaviour
     {
         SaveSystem.SaveByJSON(id.text, data);
     }
-    public void LoadByJosn()
+    public bool LoadByJosn()
     {
         data = SaveSystem.LoadFromJSON<GameData>(id.text);
+        if(data != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     [System.Serializable]
     public class GameData

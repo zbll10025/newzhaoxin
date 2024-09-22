@@ -107,36 +107,40 @@ public class BaseEnemy : MonoBehaviour
      public virtual void Onhit()
         {
             ishit = true;
-            Vector2 a = -playerDirection * hitForce;
+            Vector2 a = -playerDirection.normalized * hitForce;
             rig.AddForce(a, ForceMode2D.Impulse);
             hp -= 20;
-        //受伤转身
-            if (!isRightLocalscal)
+            HitFixDir();
+        }
+    /// <summary>
+    /// 受伤转身
+    /// </summary>
+    public void HitFixDir()
+    {
+        if (!isRightLocalscal)
+        {
+            if (-playerDirection.x > 0)
             {
-                if (-playerDirection.x > 0)
-                {
-                    this.gameObject.transform.localScale = new Vector3(1, 1);
-                }
-                else
-                {
-                    this.gameObject.transform.localScale = new Vector3(-1, 1);
-                }
+                this.gameObject.transform.localScale = new Vector3(1, 1);
             }
             else
             {
-                if (playerDirection.x > 0)
-                {
-                    this.gameObject.transform.localScale = new Vector3(1, 1);
-                }
-                else
-                {
-                    this.gameObject.transform.localScale = new Vector3(-1, 1);
-                }
-
+                this.gameObject.transform.localScale = new Vector3(-1, 1);
+            }
+        }
+        else
+        {
+            if (playerDirection.x > 0)
+            {
+                this.gameObject.transform.localScale = new Vector3(1, 1);
+            }
+            else
+            {
+                this.gameObject.transform.localScale = new Vector3(-1, 1);
             }
 
-
         }
+    }
     public virtual void Cancel_isHit()
     {
         ishit = false;
@@ -220,7 +224,13 @@ public class BaseEnemy : MonoBehaviour
         #endregion
     }
 
-    public bool IsGroundDetected()
+    
+    
+   /// <summary>
+   /// 场景检测->地面检测
+   /// </summary>
+   /// <returns></returns>
+     public bool IsGroundDetected()
     {
         return Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
     }
@@ -277,7 +287,7 @@ public class BaseEnemy : MonoBehaviour
     public void MostDash()
     {
          FixDirc();
-       dashDir = playerDirection;
+       dashDir = playerDirection.normalized;
         
         rig.AddForce(dashDir * dashForce, ForceMode2D.Impulse);
         

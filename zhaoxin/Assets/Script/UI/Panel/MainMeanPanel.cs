@@ -16,10 +16,6 @@ public class MainMeanPanel : BasePanel
     }
     public void StartGame()
     {
-        StartCoroutine(DelayDisplayOpening());
-    }
-    public void Continue()
-    {
         StartCoroutine(DelayDisplayComtinue());
     }
     public void Option()
@@ -31,14 +27,7 @@ public class MainMeanPanel : BasePanel
         Application.Quit();
     }
     #region 延迟加载各种页面
-    IEnumerator DelayDisplayOpening()//延迟加载开始游戏
-    {
-        logoTitle.Play("TileFadeOut");
-        mainMeanScreen.Play("FadeOut");
-        yield return new WaitForSeconds(0.5f);
-        PlayerState.isFirstLand = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+
     IEnumerator DelayDisplayComtinue()//延迟加载继续游戏
     {
         logoTitle.Play("TileFadeOut");

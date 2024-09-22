@@ -46,7 +46,7 @@ public class BaseUIManager : Singleton<BaseUIManager>
             { UIConst.ContinuePanel,"UIPanel/ContinueGamePanel" },
             { UIConst.PlayerHealthUI,"UIPanel/PlayerHealthUI" },
             { UIConst.PausePanel,"UIPanel/PausePanel" },
-            {UIConst.TalkPanel,"UIpanel/TalkPanel" }
+            { UIConst.TalkPanel,"UIPanel/TalkPanel"}
         };
 
     }

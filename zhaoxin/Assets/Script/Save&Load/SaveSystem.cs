@@ -40,10 +40,10 @@ public static class SaveSystem
 
             return data;
         }
-        catch (System.Exception exception)
+        catch //(System.Exception exception)
         {
 #if UNITY_EDITOR
-            Debug.LogError($"Failed to load file to {path}\n {exception}");
+            //Debug.Log($"Failed to load file to {path}\n {exception}");
 #endif
             return default;
         }

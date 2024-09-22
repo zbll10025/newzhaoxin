@@ -10,6 +10,7 @@ public class PlayerState : IState
     public static bool isDashing;
     public static bool isHit;
     public static bool isFirstLand;
+    public static bool isDead;
 
     protected float jumpHandTimeThreshold = 0.1f;//…Ë÷√Ã¯‘æ‘›Õ£„–÷µ£¨ π∂Ø◊˜Àøª¨
 
@@ -53,9 +54,15 @@ public class PlayerState : IState
 
     public virtual void Update()
     {
+        if (isDead)//À¿Õˆ◊¥Ã¨
+        {
+            anim.Play("Dead");
+            rb.velocity = new Vector2(0f, 0f);
+            return;
+        }
         xInput = PlayerInputSystem.MainInstance.PlayerXMove.x;
         anim.SetFloat(AnimatorID.YVelocityID, rb.velocity.y);
-        if(Input.GetKeyDown(KeyCode.X))// ‹…À≤‚ ‘
+        if(isHit)// ‹…À≤‚ ‘
         {
             stateMachine.ChangeState(stateMachine.TakeDamageState);
         }

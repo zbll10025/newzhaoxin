@@ -6,10 +6,23 @@ public class Health : MonoBehaviour
 {
     public Animator[] healthItem;
     public Animator geo;
-    
-    private void Hit()
+
+    private Hero player;
+    private void Start()
     {
-        healthItem[0].SetTrigger("Enter");
+        player = FindObjectOfType<Hero>();
+    }
+    public void Hit()
+    {
+        if(PlayerState.isDead) return;
+        healthItem[player.health-1].SetTrigger("Hit");
+    }
+    public void SetHealthUI()
+    {
+        for(int i = player.health; i < healthItem.Length; i++)
+        {
+            healthItem[i].SetTrigger("Hit");
+        }
     }
     public IEnumerator ShowHealthItems()
     {
@@ -19,6 +32,7 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         yield return new WaitForSeconds(0.2f);
+        SetHealthUI();
         geo.Play("Enter");
     }
     public void HidHealthItem()

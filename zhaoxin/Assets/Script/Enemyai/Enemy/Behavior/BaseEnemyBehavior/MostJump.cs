@@ -67,7 +67,7 @@ public class MostJump : Action
         }
             if (jumpForce == 0)
             {
-                float time = math.sqrt((2 * jumpHeight) / 9.8f);
+                float time = math.sqrt((2 * jumpHeight) / 20f);
             if (isNeddJumpTime)
             {
                 behavior.SetVariableValue("jumpTime", time);
