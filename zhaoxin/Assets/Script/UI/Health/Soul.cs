@@ -18,7 +18,7 @@ public class Soul : MonoBehaviour
         player = transform.parent.GetComponent<Hero>();
        
         soulAnim = GameObject.Find("SoulOrb").GetComponent<Animator>();
-        TimerManager.MainInstance.GetTimer(0.5f, DisableAnimator);
+        TimerManager.MainInstance.GetTimer(1f, DisableAnimator);
     }
     private void Update()
     {

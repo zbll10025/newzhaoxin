@@ -55,7 +55,7 @@ public class Hero : MonoBehaviour
 
     private void Awake()
     {
-        Load();
+        //Load();
         playerStateMachine = new PlayerStateMachine(this);
         BaseUIManager.MainInstance.OpenPanel(UIConst.PlayerHealthUI);
     }
@@ -157,18 +157,27 @@ public class Hero : MonoBehaviour
     }
     #endregion
     #region 受伤检测
-    void OnCollisionEnter2D(Collision2D collision)
+    public void IsHit(int damage)
     {
-        // 检测与敌人的碰撞
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            PlayerState.isHit = true;
-            LoseHealth(1);
-        }
+        PlayerState.isHit = true;
+        LoseHealth(damage);
     }
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    // 检测与敌人的碰撞
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        PlayerState.isHit = true;
+    //        LoseHealth(1);
+    //    }
+    //}
     public void LoseHealth(int health)
     {
-        FindObjectOfType<Health>().Hit();//UI
+        for (int i = 0; i < health; i++)
+        {
+           
+            FindObjectOfType<Health>().Hit();//UI
+        }
         this.health -= health;
     }
     #endregion

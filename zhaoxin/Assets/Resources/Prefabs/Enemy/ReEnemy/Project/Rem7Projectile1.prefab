@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Rem7Projectile1
   rig: {fileID: 0}
+  damageValue: 2
 --- !u!114 &6052835603882946319
 MonoBehaviour:
   m_ObjectHideFlags: 0

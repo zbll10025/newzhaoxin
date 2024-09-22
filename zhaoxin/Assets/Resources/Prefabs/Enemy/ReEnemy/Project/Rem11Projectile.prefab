@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5173479407411410984}
   m_Layer: 7
   m_Name: Rem11Projectile
-  m_TagString: Untagged
+  m_TagString: zidanag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Rem11Projectile
   rig: {fileID: 0}
+  damageValue: 0
 --- !u!114 &5381496024737552209
 MonoBehaviour:
   m_ObjectHideFlags: 0

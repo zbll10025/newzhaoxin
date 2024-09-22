@@ -29,7 +29,12 @@ public class BaseEnemy : MonoBehaviour
     public Animator ani;
     [Header("状态")]
     public float hp;
+    public float damageSp;
+    //计算Sp的倍率
+    public float multSp=1;
+    public float currentSp;
     public bool isdead;
+    public bool isbeat;
     public bool ishit;
     public bool isGround;
     public bool isJump;
@@ -39,6 +44,8 @@ public class BaseEnemy : MonoBehaviour
     [Header("力相关")]
     public float dashForce;
     public float hitForce;
+    [Header("子物体位置设置")]
+    public Transform hitEffectPosition;
     //"子物体上组件相关"
     [HideInInspector]
     public AttackAreac AttackAreac;
@@ -104,14 +111,56 @@ public class BaseEnemy : MonoBehaviour
 
         
     }
-     public virtual void Onhit()
+     public virtual void Onhit(float damage,float sp)
+     {
+        CaculateDamage(damage, sp);
+        isbeat = true;
+        if (hp <= 0)
         {
-            ishit = true;
-            Vector2 a = -playerDirection.normalized * hitForce;
+            isdead = true;
+            return;
+        }
+        //如果currentSp<0则触发僵值
+        if (currentSp <= 0)
+        {   Vector2 a = -playerDirection.normalized * hitForce;
             rig.AddForce(a, ForceMode2D.Impulse);
-            hp -= 20;
+            currentSp = damageSp;
+            ishit = true;
+        }
+           
+            GetHitEffect();
+        if (multSp!=0)
+        {
             HitFixDir();
         }
+            
+
+        }
+    public virtual void Onhit()
+    {
+        
+        CaculateDamage(0.1f, 5);
+        isbeat = true;
+        if (hp <= 0)
+        {
+            isdead = true;
+            return;
+        }
+        //如果currentSp<0则触发僵值
+        if (currentSp <= 0)
+        {
+            currentSp = damageSp;
+            Vector2 a = -playerDirection.normalized * hitForce;
+            rig.AddForce(a, ForceMode2D.Impulse);
+            ishit = true;
+        }
+        
+        
+        GetHitEffect();
+        if (multSp!=0)
+        HitFixDir();
+
+    }
     /// <summary>
     /// 受伤转身
     /// </summary>
@@ -140,6 +189,27 @@ public class BaseEnemy : MonoBehaviour
             }
 
         }
+    }
+    /// <summary>
+    /// 加载受伤特效
+    /// </summary>
+    public void GetHitEffect()
+    {
+        GameObject obj = PoolManger.Instance.Get("MostHitEffect", "Prefabs/Enemy/BloodEffect/MostHitParticle");
+        obj.transform.position = hitEffectPosition.position;
+        MostHitParticleContorl contorlObj = obj.GetComponent<MostHitParticleContorl>();
+        contorlObj.isRig = isRightLocalscal;
+        contorlObj.most = transform;
+        obj.SetActive(true);
+        contorlObj.OnStart();
+    }
+    /// <summary>
+    /// 计算伤害
+    /// </summary>
+    public void CaculateDamage(float damage,float sp)
+    {
+        hp-=damage;
+        currentSp-=(sp*multSp);
     }
     public virtual void Cancel_isHit()
     {
@@ -291,5 +361,10 @@ public class BaseEnemy : MonoBehaviour
         
         rig.AddForce(dashDir * dashForce, ForceMode2D.Impulse);
         
+    }
+
+    public void ChangeMulSp(float value = 0)
+    {
+        multSp = value;
     }
 }
