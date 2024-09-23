@@ -14,6 +14,7 @@ public class PlayerStateMachine : StateMachine
     public WallSlideState WallSlideState { get; private set; }
     public WallJumpState WallJumpState { get; private set; }
     public PrimaryAttack PrimaryAttack { get; private set; }
+    public PrimaryAttack2 PrimaryAttack2 { get; private set; }
     public ChargeState ChargeState { get; private set; }
     public ChargeAttack1 ChargeAttack1 { get; private set; }
     public AttackState AttackState { get; private set; }
@@ -42,5 +43,6 @@ public class PlayerStateMachine : StateMachine
         DashState = new DashState(this);
         TakeDamageState = new TakeDamageState(this);
         FirstLandState = new FirstLandState(this);
+        PrimaryAttack2 = new PrimaryAttack2(this);
     }
 }

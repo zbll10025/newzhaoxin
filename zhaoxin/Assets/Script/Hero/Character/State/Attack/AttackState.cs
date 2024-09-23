@@ -28,7 +28,6 @@ public class AttackState : PlayerState
         base.Update();
         if (triggerCalled)
         {
-            Debug.Log(true);
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }

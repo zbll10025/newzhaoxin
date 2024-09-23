@@ -11,7 +11,11 @@ public class PrimaryAttack : AttackState
     public override void Enter()
     {
         base.Enter();
-        anim.CrossFadeInFixedTime("PrimaryAttack", 0, 0);
+
+        //stateMachine.hero.SlashAndDetect(Attack.AttackType.Slash);
+        anim.CrossFadeInFixedTime("PrimaryAttack1", 0, 0);
+        
+        
         
     }
 
@@ -24,6 +28,9 @@ public class PrimaryAttack : AttackState
     public override void Update()
     {
         base.Update();
-        
+        if (PlayerInputSystem.MainInstance.PrimaryAttack)//¶þ¶Î¹¥»÷
+        {
+            stateMachine.ChangeState(stateMachine.PrimaryAttack2);
+        }
     }
 }

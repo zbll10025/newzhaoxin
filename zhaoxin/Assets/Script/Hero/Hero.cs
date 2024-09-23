@@ -141,6 +141,16 @@ public class Hero : MonoBehaviour
             FindObjectOfType<SoulOrb>().DelayShowOrb();
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+        if(collision.gameObject.CompareTag("Enemy"))
+        { Debug.Log("2222222222222222222222");
+            BaseEnemy baseEnemy = collision.GetComponent<BaseEnemy>();
+            if ((baseEnemy == null)) return;
+            baseEnemy.Onhit();
+        }
+    }
     #endregion
     #region µÿ√ÊºÏ≤‚
     public bool IsGroundDetected()
@@ -233,4 +243,5 @@ public class Hero : MonoBehaviour
         public int soulOrb;
     }
     #endregion
+    
 }

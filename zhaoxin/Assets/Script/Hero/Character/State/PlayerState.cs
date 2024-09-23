@@ -35,7 +35,7 @@ public class PlayerState : IState
     }
     public virtual void Enter()
     {
-        Debug.Log(GetType().Name);
+        //Debug.Log(GetType().Name);
     }
 
     public virtual void Exit()

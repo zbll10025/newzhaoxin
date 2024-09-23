@@ -138,8 +138,8 @@ public class BaseEnemy : MonoBehaviour
         }
     public virtual void Onhit()
     {
-        
-        CaculateDamage(0.1f, 5);
+        //Debug.Log("11111111111111111111111111111");
+        CaculateDamage(10f, 5);
         isbeat = true;
         if (hp <= 0)
         {

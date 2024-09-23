@@ -486,6 +486,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\LayerMask\SetLayer.cs" />
     <Compile Include="Assets\Script\Timer\TimerManage.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\NavMeshAgent\SetAngularSpeed.cs" />
+    <Compile Include="Assets\Script\Hero\Character\State\Attack\PrimaryAttack2.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\Animator\IsName.cs" />
     <Compile Include="Assets\Script\Xls\XlsWork\IndividualData.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Tasks\Unity\CharacterController\GetRadius.cs" />

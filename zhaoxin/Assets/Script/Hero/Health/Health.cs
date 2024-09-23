@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     public void Hit()
     {
         if(PlayerState.isDead) return;
+        if (player.health > 5) return;
         healthItem[player.health-1].SetTrigger("Hit");
     }
     public void SetHealthUI()
